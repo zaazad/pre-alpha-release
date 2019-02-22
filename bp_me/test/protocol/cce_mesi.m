@@ -16,25 +16,32 @@
 -- Constants
 ----------------------------------------------------------------------
 const 
-  LCEcount: 3;     -- number of LCE's
+  n_lce: 3;     -- number of LCE's
+  lce_req: 0;
+  lce_resp: 1;
+  lce_data_resp: 2;
+  lce_cmd: 3;
+  lce_data_cmd: 4;
+  num_net: 5;
+
 ----------------------------------------------------------------------
 -- Types
 ----------------------------------------------------------------------
 type
 
-  LCErange: 0..(LCEcount-1);        -- 3 LCE's identified 0-2
-  LCEcounterRange: 0..LCEcount;     -- Used to count number of LCE sharers
+  LCErange: 0..(n_lce-1);        -- LCE's identifiers
+  LCEcounterRange: 0..n_lce;     -- Used to count number of LCE sharers
   CacheLine: 0..1;                  -- valid cache line identifiers 0 or 1 (aka 2 data sets)
   StateType: enum { M, E, S, I};    -- Used to cycle through types
   LCEReqType: enum { R, W, EM, N}; -- To keep track of operation that was blocked for cacheline Read, Wrtie, Evict modified, None
-  ValType: 0..999999;               -- Used as an indicator of the cache lines value
+  Value: 0..999999;               -- Used as an indicator of the cache lines value
   --Pending_req_Q: array []
 
   CCEState:
     Record
       state: StateType;           
       owner: array [LCErange] of boolean;   -- Is it an owner of the cacheline or not  
-      val: ValType;                         -- need this here in case all lines invalid reassign value after read/write req     
+      val: Value;                         -- need this here in case all lines invalid reassign value after read/write req     
       pending: boolean;                     -- whether or not the cache line is pending response from mem           
     End;
 
@@ -42,7 +49,7 @@ type
     Record
       state: StateType;     
       owner: boolean;                       -- Is it an owner of the cacheline or not 
-      val: ValType;                         -- assuming less state space than this if not increase number
+      val: Value;                         -- assuming less state space than this if not increase number
       blocking: boolean;                    -- whether or not LCE is waiting for operation to complete
       blockd_req: LCEReqType;               -- Used to hold what kind of op was blocked for cacheline
     End;
