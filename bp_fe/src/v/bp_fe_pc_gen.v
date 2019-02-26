@@ -76,7 +76,6 @@ bp_fe_pc_gen_queue_s        pc_gen_queue;
 bp_fe_pc_gen_cmd_s          fe_pc_gen_cmd;
 bp_fe_pc_gen_icache_s       pc_gen_icache;
 bp_fe_pc_gen_itlb_s         pc_gen_itlb;
-bp_fe_branch_metadata_fwd_s branch_metadata_fwd_i;
 bp_fe_branch_metadata_fwd_s branch_metadata_fwd_o;
 bp_fe_icache_pc_gen_s       icache_pc_gen;
 
@@ -106,7 +105,8 @@ logic                          misalignment;
 logic                          predict;
 logic                          pc_redirect_after_icache_miss;
 logic                          stalled_pc_redirect;
-logic   		       bht_r_v_branch_jalr_inst;
+logic                          bht_r_v_branch_jalr_inst;
+logic                          branch_inst;
    
 //connect pc_gen to the rest of the FE submodules as well as FE top module   
 assign pc_gen_icache_o = pc_gen_icache;
@@ -237,7 +237,6 @@ always_ff @(posedge clk_i)
 
 instr_scan 
   #(.eaddr_width_p(eaddr_width_p)
-    ,.bp_fe_instr_scan_width_lp(`bp_fe_instr_scan_width)
     ,.instr_width_p(instr_width_p)
    ) 
   instr_scan_1 
@@ -262,9 +261,9 @@ generate
          (.clk_i(clk_i)
           ,.reset_i(reset_i)
           ,.attaboy_i(fe_pc_gen_cmd.attaboy_valid)
-          ,.r_v_i(/*~fe_pc_gen_v_i*/bht_r_v_branch_jalr_inst)
+          ,.r_v_i(bht_r_v_branch_jalr_inst)
           ,.w_v_i(fe_pc_gen_v_i)
-          ,.pc_queue_i(/*pc*/icache_pc_gen.addr)
+          ,.pc_queue_i(last_pc)
           ,.pc_cmd_i(fe_pc_gen_cmd.pc)
           ,.pc_fwd_i(icache_pc_gen.addr)
           ,.branch_metadata_fwd_i(fe_pc_gen_cmd.branch_metadata_fwd)
@@ -285,9 +284,9 @@ generate
         (.clk_i(clk_i)
          ,.reset_i(reset_i)
          ,.attaboy_i(fe_pc_gen_cmd.attaboy_valid)
-         ,.r_v_i(/*~fe_pc_gen_v_i*/branch_inst)
+         ,.r_v_i(bht_r_v_branch_jalr_inst)
          ,.w_v_i(fe_pc_gen_v_i)
-         ,.pc_queue_i(/*pc*/icache_pc_gen.addr)
+         ,.pc_queue_i(last_pc)
          ,.pc_cmd_i(fe_pc_gen_cmd.pc)
          ,.pc_fwd_i(icache_pc_gen.addr)
          ,.branch_metadata_fwd_i(fe_pc_gen_cmd.branch_metadata_fwd)

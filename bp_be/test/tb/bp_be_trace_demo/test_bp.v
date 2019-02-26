@@ -8,6 +8,7 @@ module test_bp
  import bp_common_pkg::*;
  import bp_be_rv64_pkg::*;
  import bp_be_pkg::*;
+ import bp_cce_pkg::*;
  #(parameter core_els_p                    = "inv"
    , parameter vaddr_width_p               = "inv"
    , parameter paddr_width_p               = "inv"
@@ -19,6 +20,7 @@ module test_bp
    , parameter lce_sets_p                  = "inv"
    , parameter cce_block_size_in_bytes_p   = "inv"
    , parameter cce_num_inst_ram_els_p      = "inv"
+   , parameter mem_els_p                   = "inv"
  
    , parameter boot_rom_width_p            = "inv"
    , parameter boot_rom_els_p              = "inv"
@@ -39,6 +41,8 @@ module test_bp
 
    , localparam reg_data_width_lp = rv64_reg_data_width_gp
    , localparam byte_width_lp     = rv64_byte_width_gp
+
+   , localparam cce_inst_ram_addr_width_lp = `BSG_SAFE_CLOG2(cce_num_inst_ram_els_p)
  );
 
 
@@ -70,6 +74,10 @@ logic [boot_rom_width_p-1:0]   irom_data;
 
 logic [lg_boot_rom_els_lp-1:0] mrom_addr;
 logic [boot_rom_width_p-1:0]   mrom_data;
+
+// CCE Inst Boot ROM
+logic [cce_inst_ram_addr_width_lp-1:0] cce_inst_boot_rom_addr;
+logic [`bp_cce_inst_width-1:0]         cce_inst_boot_rom_data;
 
 logic fe_queue_clr, fe_queue_dequeue, fe_queue_rollback;
 
@@ -317,11 +325,12 @@ bp_boot_rom
 bp_me_top 
  #(.num_lce_p(num_lce_p)
    ,.num_cce_p(num_cce_p)
-   ,.addr_width_p(paddr_width_p)
+   ,.paddr_width_p(paddr_width_p)
    ,.lce_assoc_p(lce_assoc_p)
    ,.lce_sets_p(lce_sets_p)
    ,.block_size_in_bytes_p(cce_block_size_in_bytes_p)
    ,.num_inst_ram_els_p(cce_num_inst_ram_els_p)
+   ,.mem_els_p(mem_els_p)
 
    ,.boot_rom_els_p(boot_rom_els_p)
    ,.boot_rom_width_p(boot_rom_width_p)
@@ -360,7 +369,19 @@ bp_me_top
 
    ,.boot_rom_addr_o(mrom_addr)
    ,.boot_rom_data_i(mrom_data)
+
+   ,.cce_inst_boot_rom_addr_o(cce_inst_boot_rom_addr)
+   ,.cce_inst_boot_rom_data_i(cce_inst_boot_rom_data)
    );
+
+bp_cce_inst_rom
+  #(.width_p(`bp_cce_inst_width)
+    ,.addr_width_p(cce_inst_ram_addr_width_lp)
+    )
+  cce_inst_rom
+   (.addr_i(cce_inst_boot_rom_addr)
+    ,.data_o(cce_inst_boot_rom_data)
+    );
 
 bp_boot_rom 
  #(.width_p(boot_rom_width_p)
@@ -371,11 +392,64 @@ bp_boot_rom
    ,.data_o(mrom_data)
    );
 
+logic booted;
+
+localparam max_instr_cnt_lp    = 2**30-1;
+localparam lg_max_instr_cnt_lp = `BSG_SAFE_CLOG2(max_instr_cnt_lp);
+logic [lg_max_instr_cnt_lp-1:0] instr_cnt;
+
+  bsg_counter_clear_up
+   #(.max_val_p(max_instr_cnt_lp)
+     ,.init_val_p(0)
+     )
+   instr_counter
+    (.clk_i(clk)
+     ,.reset_i(reset)
+
+     ,.clear_i(1'b0)
+     ,.up_i(~(|cmt_trace_exc
+              | cmt_trace_stage_reg.decode.fe_nop_v
+              | cmt_trace_stage_reg.decode.be_nop_v
+              | cmt_trace_stage_reg.decode.me_nop_v
+              )
+            )
+
+     ,.count_o(instr_cnt)
+     );
+
+localparam max_clock_cnt_lp    = 2**30-1;
+localparam lg_max_clock_cnt_lp = `BSG_SAFE_CLOG2(max_clock_cnt_lp);
+logic [lg_max_clock_cnt_lp-1:0] clock_cnt;
+
+  bsg_counter_clear_up
+   #(.max_val_p(max_clock_cnt_lp)
+     ,.init_val_p(0)
+     )
+   clock_counter
+    (.clk_i(clk)
+     ,.reset_i(reset)
+
+     ,.clear_i(~booted)
+     ,.up_i(1'b1)
+
+     ,.count_o(clock_cnt)
+     );
+   
+always_ff @(posedge clk)
+  begin
+    if (reset)
+        booted <= 1'b0;
+    else 
+      begin
+        booted <= booted | fe_fe_queue_v; // Booted when we fetch the first instruction
+      end
+  end
+
 always_ff @(posedge clk) 
   begin
     if (test_done) 
       begin
-        $display("Test PASSed!");
+        $display("Test PASSed! Clocks: %d Instr: %d mIPC: %d", clock_cnt, instr_cnt, (1000*instr_cnt) / clock_cnt);
         $finish(0);
       end
   end

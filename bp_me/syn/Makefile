@@ -7,7 +7,17 @@ BP_BE_PATH	   = $(TOP)/bp_be
 BP_ME_PATH 	   = $(TOP)/bp_me
 BP_COMMON_PATH = $(TOP)/bp_common
 
-CADENV_PATH    = $(TOP)/bsg_cadenv
+# Needed for other dc check_syn
+BP_TOP_DIR	     = $(TOP)/bp_top
+BP_FE_DIR	       = $(TOP)/bp_fe
+BP_BE_DIR	       = $(TOP)/bp_be
+BP_ME_DIR 	     = $(TOP)/bp_me
+BP_COMMON_DIR    = $(TOP)/bp_common
+BSG_IP_CORES_DIR = $(TOP)/bsg_ip_cores
+SYN_PATH         = $(BP_ME_DIR)/syn
+TB_PATH          = $(BP_ME_DIR)/test/tb
+
+BSG_CADENV_DIR    = $(TOP)/bsg_cadenv
 BSG_IP_PATH	   = $(TOP)/bsg_ip_cores
 VERILATOR_PATH = $(TOP)/verilator
 SYSTEMC_PATH   = $(TOP)/systemc
@@ -23,7 +33,7 @@ NETWORK_PATH = $(BP_ME_SRC_PATH)/network
 # All synthesizable sources 
 # Nonsynth and test sources are added in tool-specific files
 HDL_SOURCE = \
-	$(BP_COMMON_PATH)/bp_common_pkg.vh \
+	$(BP_COMMON_PATH)/src/include/bp_common_pkg.vh \
 	$(BP_ME_INC_PATH)/bp_cce_pkg.v \
 	$(BP_ME_INC_PATH)/bp_me_network_pkg.v \
 	$(BSG_IP_PATH)/bsg_misc/bsg_defines.v \
@@ -54,7 +64,7 @@ test_env:
 		[ -d $(BP_TOP_PATH)    ] && [ -d $(BP_FE_PATH)      ] && \
 		[ -d $(BP_BE_PATH)     ] && [ -d $(BP_ME_PATH)      ] && \
 		[ -d $(BP_COMMON_PATH)    ] && [ -d $(BSG_IP_PATH)     ] && \
-		[ -d $(CADENV_PATH)	   ] && [ -d $(VERILATOR_PATH)  ] && \
+		[ -d $(BSG_CADENV_DIR)	   ] && [ -d $(VERILATOR_PATH)  ] && \
 		[ -d $(SYSTEMC_PATH)   ] && 							 \
 		echo "BP environment correctly set up!"
 
@@ -71,4 +81,6 @@ clean:
 include	$(BP_ME_SYN_PATH)/Makefile.verilator
 
 include $(BP_ME_SYN_PATH)/Makefile.vcs
+
+include $(BP_ME_SYN_PATH)/Makefile.dc
 
