@@ -2,8 +2,6 @@
  *  testbench.v
  */
 
-`include "bp_be_dcache_pkt.vh"
-
 module testbench();
   import bp_common_pkg::*;
   import bp_be_dcache_pkg::*;
@@ -16,7 +14,6 @@ module testbench();
   localparam paddr_width_p = bp_sv39_paddr_width_gp;
   localparam num_cce_p = 1;
   localparam num_lce_p = `NUM_LCE_P;
-  localparam mem_els_p = sets_p*ways_p*ways_p;
   localparam instr_count = `NUM_INSTR_P;
   localparam num_cce_inst_ram_els_p = 256;
 
@@ -35,22 +32,29 @@ module testbench();
 
   // clock gen
   //
-  logic clk;
+  logic bp_clk;
   bsg_nonsynth_clock_gen #(
-    .cycle_time_p(10)
-  ) clk_gen (
-    .o(clk)
+    .cycle_time_p(1000)
+  ) bp_clk_gen (
+    .o(bp_clk)
+  );
+
+  logic link_clk;
+  bsg_nonsynth_clock_gen #(
+    .cycle_time_p(1500)
+  ) link_clk_gen (
+    .o(link_clk)
   );
 
   // reset gen
   //
   logic reset;
   bsg_nonsynth_reset_gen #(
-    .num_clocks_p(1)
+    .num_clocks_p(2)
     ,.reset_cycles_lo_p(0)
-    ,.reset_cycles_hi_p(4)
+    ,.reset_cycles_hi_p(16)
   ) reset_gen (
-    .clk_i(clk)
+    .clk_i({bp_clk, link_clk})
     ,.async_reset_o(reset)
   );
 
@@ -66,18 +70,17 @@ module testbench();
   logic [num_lce_p-1:0] dcache_v_lo;
   logic [num_lce_p-1:0][data_width_p-1:0] dcache_data_lo;
 
-  bp_rolly_lce_me #(
+  bp_rolly_lce_me_manycore #(
     .data_width_p(data_width_p)
     ,.sets_p(sets_p)
     ,.ways_p(ways_p)
     ,.paddr_width_p(paddr_width_p)
     ,.num_lce_p(num_lce_p)
     ,.num_cce_p(num_cce_p)
-    ,.mem_els_p(mem_els_p)
-    ,.boot_rom_els_p(mem_els_p)
     ,.num_cce_inst_ram_els_p(num_cce_inst_ram_els_p)
-  ) dcache_cce_mem (
-    .clk_i(clk)
+  ) mem_subsystem (
+    .clk_i(bp_clk)
+    ,.link_clk_i(link_clk)
     ,.reset_i(reset)
   
     ,.dcache_pkt_i(dcache_pkt)
@@ -102,7 +105,7 @@ module testbench();
       ,.ring_width_p(ring_width_p)
       ,.rom_addr_width_p(rom_addr_width_p)
     ) trace_node_master (
-      .clk_i(clk)
+      .clk_i(bp_clk)
       ,.reset_i(reset)
       ,.en_i(1'b1)
 
@@ -128,7 +131,7 @@ module testbench();
   logic [num_lce_p-1:0] dcache_done;
   logic [num_lce_p-1:0][31:0] dcache_v_count;
   
-  always_ff @ (posedge clk) begin
+  always_ff @ (posedge bp_clk) begin
     if (reset) begin
       for (integer i = 0; i < num_lce_p; i++) begin
         dcache_v_count[i] <= '0;

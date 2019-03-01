@@ -32,19 +32,6 @@ module bp_rolly_lce_me
       
     , localparam bp_be_dcache_pkt_width_lp=`bp_be_dcache_pkt_width(bp_page_offset_width_gp,data_width_p)
 
-    , localparam lce_cce_req_width_lp=
-      `bp_lce_cce_req_width(num_cce_p,num_lce_p,paddr_width_p,ways_p)
-    , localparam lce_cce_resp_width_lp=
-      `bp_lce_cce_resp_width(num_cce_p,num_lce_p,paddr_width_p)
-    , localparam lce_cce_data_resp_width_lp=
-      `bp_lce_cce_data_resp_width(num_cce_p,num_lce_p,paddr_width_p,lce_data_width_lp)
-    , localparam cce_lce_cmd_width_lp=
-      `bp_cce_lce_cmd_width(num_cce_p,num_lce_p,paddr_width_p,ways_p)
-    , localparam cce_lce_data_cmd_width_lp=
-      `bp_cce_lce_data_cmd_width(num_cce_p,num_lce_p,paddr_width_p,lce_data_width_lp,ways_p)
-    , localparam lce_lce_tr_resp_width_lp=
-      `bp_lce_lce_tr_resp_width(num_lce_p,paddr_width_p,lce_data_width_lp,ways_p)
-
     , localparam inst_ram_addr_width_lp = `BSG_SAFE_CLOG2(num_cce_inst_ram_els_p)
   )
   (
