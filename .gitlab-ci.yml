@@ -1,4 +1,5 @@
 variables:
+  GIT_DEPTH: "3"
   GIT_STRATEGY: fetch
   GIT_SUBMODULE_STRATEGY: recursive
 
