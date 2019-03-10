@@ -25,17 +25,19 @@ export SYSTEMC_LIBDIR=$BP_EXTERNAL_DIR/lib-linux64
 export PATH=$CWD/external/bin:$PATH
 export LD_LIBRARY_PATH=$SYSTEMC_LIBDIR:$LD_LIBRARY_PATH
 
-if [ "$1" = "init" ]; then
-  git submodule update --init --recursive
+git submodule update --init --recursive
 
+if [ "$1" = "tools" ]; then
   # Make external tools (uncomment whichever individual tool you would like to build)
-  #make -C $CWD/external all
-  make -C $CWD/external verilator -j 25
-  make -C $CWD/external gnu       -j 25
-  make -C $CWD/external fesvr     -j 25
-  make -C $CWD/external spike     -j 25
-  make -C $CWD/external axe       -j 25
+  make -C $CWD/external all
+  #make -C $CWD/external verilator
+  #make -C $CWD/external gnu
+  #make -C $CWD/external fesvr
+  #make -C $CWD/external spike
+  #make -C $CWD/external axe
+fi
 
+if [ "$1" = "roms" ]; then
   # Make test roms
   make -C $BP_FE_DIR/test/rom all
   make -C $BP_BE_DIR/test/rom all
@@ -43,10 +45,3 @@ if [ "$1" = "init" ]; then
   make -C $BP_TOP_DIR/test/rom all
 fi
 
-if [ "$2" = "roms" ]; then
-  # Make test roms
-  make -C $BP_FE_DIR/test/rom all
-  make -C $BP_BE_DIR/test/rom all
-  make -C $BP_ME_DIR/test/rom all
-  make -C $BP_TOP_DIR/test/rom all
-fi
