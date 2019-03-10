@@ -43,3 +43,10 @@ if [ "$1" = "init" ]; then
   make -C $BP_TOP_DIR/test/rom all
 fi
 
+if [ "$2" = "roms" ]; then
+  # Make test roms
+  make -C $BP_FE_DIR/test/rom all
+  make -C $BP_BE_DIR/test/rom all
+  make -C $BP_ME_DIR/test/rom all
+  make -C $BP_TOP_DIR/test/rom all
+fi
