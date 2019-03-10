@@ -12,6 +12,7 @@ install_dependencies:
   when:
     manual
   script:
+    - `(pwd)`
     - if [ "${BUILD_DEPS}" == "1"]; then source setup_env tools;
     - if [ "${BUILD_ROMS}" == "1"]; then source setup_env roms;
 
