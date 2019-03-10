@@ -4,6 +4,7 @@ variables:
 
 before_script:
   - echo "Hello CI"
+  - export PATH=$PATH:/usr/local/bin
   - source setup_env.sh
 
 install_dependencies:
