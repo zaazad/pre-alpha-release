@@ -1,11 +1,11 @@
 variables:
+  CI_PROJECT_DIR: /builds/dpetrisko/
   DOCKER_DRIVER: overlay2
-  GIT_STRATEGY: none
+  GIT_DEPTH: "50"
+  GIT_STRATEGY: fetch
   GIT_SUBMODULE_STRATEGY: none
 
 before_script:
-  - cd /builds/dpetrisko/pre-alpha-release
-  - git pull
   - source setup_env.sh
 
 # Only needed if not using the provided Gitlab docker image
