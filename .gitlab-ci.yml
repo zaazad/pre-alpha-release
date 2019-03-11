@@ -5,7 +5,6 @@ variables:
   GIT_SUBMODULE_STRATEGY: none
 
 before_script:
-  - yum update -y
   - echo "Hello CI"
   - export PATH=$PATH:/usr/local/bin:/usr/bin
   - source setup_env.sh
@@ -27,4 +26,9 @@ fail-job:
   script:
     - echo "Failing job 2"
     - exit 1 
+
+test-job:
+  script:
+    - cd bp_top
+    - ./regress.sh
 
