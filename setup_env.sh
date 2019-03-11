@@ -40,9 +40,9 @@ fi
 
 if [ "$1" = "roms" ]; then
   # Make test roms
-  make -C $BP_FE_DIR/test/rom all
-  make -C $BP_BE_DIR/test/rom all
-  make -C $BP_ME_DIR/test/rom all
-  make -C $BP_TOP_DIR/test/rom all
+  make -C $BP_FE_DIR/test/rom all clean
+  make -C $BP_BE_DIR/test/rom all clean
+  make -C $BP_ME_DIR/test/rom all clean
+  make -C $BP_TOP_DIR/test/rom all clean
 fi
 
