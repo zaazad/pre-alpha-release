@@ -21,13 +21,13 @@ pass-job:
     - echo "Passing job 1"
     - exit 0
 
-fail-job:
-  script:
-    - echo "Failing job 2"
-    - exit 1 
+#fail-job:
+#  script:
+#    - echo "Failing job 2"
+#    - exit 1 
 
 test-job:
   script:
     - cd bp_top
-    - ./regress.sh
+    - ./regress.sh verilator
 

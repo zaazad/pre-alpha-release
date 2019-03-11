@@ -1,10 +1,10 @@
 #!/bin/sh
 
-if [ "$1" -eq "verilator" ]
+if [ "$1" == "verilator" ]
 then
-  TOOL = sc
+  TOOL=sc
 else
-  TOOL = v
+  TOOL=v
 fi
 
 # Ugly bash magic to get all of the regression tests
@@ -16,14 +16,14 @@ BENCH_ROMS="median_rom multiply_rom towers_rom vvadd_rom"
 echo "################# BP_TOP REGRESSION ###################"
 for ROM in $ISA_ROMS ; do 
   echo -n "$ROM : "
-  make -C $BP_TOP_DIR/syn TEST_ROM=$ROM.v TRACE_ROM=$ROM.tr.v COVERAGE=VCS  bp_single_trace_demo.run.$TOOL \
-    | grep "PASS" || echo "FAIL"
+#  make -C $BP_TOP_DIR/syn TEST_ROM=$ROM.v TRACE_ROM=$ROM.tr.v COVERAGE=  bp_single_trace_demo.run.$TOOL \
+#    | grep "PASS" || echo "FAIL"
 done
 
 echo "################# BP_TOP BENCH ###################"
 for ROM in $BENCH_ROMS ; do 
   echo -n "$ROM : "
-  make -C $BP_TOP_DIR/syn TEST_ROM=$ROM.v TRACE_ROM=$ROM.tr.v COVERAGE=VCS bp_single_trace_demo.run.$TOOL \
+  make -C $BP_TOP_DIR/syn TEST_ROM=$ROM.v TRACE_ROM=$ROM.tr.v COVERAGE= bp_single_trace_demo.run.$TOOL \
     | grep "PASS" || echo "FAIL"
 done
 

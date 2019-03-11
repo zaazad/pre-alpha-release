@@ -16,9 +16,9 @@ lint.sc:
 	  $(HDL_PARAMS) $(TB_PATH)/bp_single_trace_demo/test_bp.cpp 
 
 %.build.sc: 
-	$(eval include $(TB_PATH)/$*/Makefile.frag)               \
-	$(VV) $(VV_OPTS) --Wno-fatal --exe --top-module testbench \
-	  -f flist.verilator -f $(TB_PATH)/$*/flist.verilator     \
+	$(eval include $(TB_PATH)/$*/Makefile.frag)                                          \
+	$(VV) $(VV_OPTS) --Wno-fatal -Wno-lint -Wno-widthconcat --exe --top-module testbench \
+	  -f flist.verilator -f $(TB_PATH)/$*/flist.verilator                                \
 	  $(HDL_PARAMS) $(TB_PATH)/$*/test_bp.cpp
 	make -C obj_dir -f Vtestbench.mk
 

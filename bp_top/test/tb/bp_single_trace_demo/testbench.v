@@ -155,10 +155,6 @@ module testbench
 	   ,.lce_assoc_p(lce_assoc_p)
 	   ,.cce_block_size_in_bytes_p(cce_block_size_in_bytes_p)
 	   ,.cce_num_inst_ram_els_p(cce_num_inst_ram_els_p)
-	   ,.mem_els_p(mem_els_p)
-
-	   ,.boot_rom_width_p(boot_rom_width_p)
-	   ,.boot_rom_els_p(boot_rom_els_p)
 	   )
     dut
         (.clk_i(clk_i)
