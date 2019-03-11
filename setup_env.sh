@@ -17,15 +17,13 @@ export VCS=${VCS:-vcs}
 export VERILATOR=${VERILATOR:-verilator}
 
 # Needed for verilator g++ compilation
-export VERILATOR_ROOT=$BP_EXTERNAL_DIR/verilator
+export VERILATOR_ROOT=$BP_EXTERNAL_DIR/
 export SYSTEMC_INCLUDE=$BP_EXTERNAL_DIR/include
 export SYSTEMC_LIBDIR=$BP_EXTERNAL_DIR/lib-linux64
 
 # Add external tools to path
 export PATH=$CWD/external/bin:$PATH
 export LD_LIBRARY_PATH=$SYSTEMC_LIBDIR:$LD_LIBRARY_PATH
-
-git submodule update --init --recursive bsg_ip_cores
 
 if [ "$1" = "tools" ]; then
   # Make external tools (uncomment whichever individual tool you would like to build)
@@ -36,7 +34,10 @@ if [ "$1" = "tools" ]; then
   #make -C $CWD/external fesvr
   #make -C $CWD/external spike
   #make -C $CWD/external axe
+  git submodule deinit -f --all
 fi
+
+git submodule update --init --recursive bsg_ip_cores
 
 if [ "$1" = "roms" ]; then
   # Make test roms
