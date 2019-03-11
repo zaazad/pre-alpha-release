@@ -39,7 +39,7 @@ fi
 
 # HACK
 rm -rf bsg_ip_cores
-git submodule update --init bsg_ip_cores --depth=50
+git submodule update --init bsg_ip_cores --depth 50
 
 if [ "$1" = "roms" ]; then
   # Make test roms
