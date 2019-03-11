@@ -1,3 +1,10 @@
+## Setup CAD tools
+ifneq (,$(findstring xor,$(shell hostname)))
+	include $(BSG_CADENV_DIR)/cadenv.mk
+else
+	$(info Not on xor...VCS not supported)
+endif
+
 ## Top level source directory should include 
 # bp_top, bp_fe, bp_be, bp_me, bp_common, bsg_ip_cores, verilator, systemc
 TOP            = $(CURDIR)/../..
@@ -29,8 +36,6 @@ BP_COMMON_DIR    = $(TOP)/bp_common
 BSG_IP_CORES_DIR = $(TOP)/bsg_ip_cores
 
 include $(SYN_PATH)/Makefile.vcs
-
 include $(SYN_PATH)/Makefile.dc
-
 include $(SYN_PATH)/Makefile.verilator
 

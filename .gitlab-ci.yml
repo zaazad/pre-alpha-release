@@ -5,10 +5,9 @@ variables:
   GIT_SUBMODULE_STRATEGY: none
 
 before_script:
-  - echo "Hello CI"
-  - export PATH=$PATH:/usr/local/bin:/usr/bin
   - source setup_env.sh
 
+# Only needed if not using the provided Gitlab docker image
 install_dependencies:
   when:
     manual
