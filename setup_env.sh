@@ -25,10 +25,11 @@ export SYSTEMC_LIBDIR=$BP_EXTERNAL_DIR/lib-linux64
 export PATH=$CWD/external/bin:$PATH
 export LD_LIBRARY_PATH=$SYSTEMC_LIBDIR:$LD_LIBRARY_PATH
 
-git submodule update --init --recursive
+git submodule update --init --recursive bsg_ip_cores
 
 if [ "$1" = "tools" ]; then
   # Make external tools (uncomment whichever individual tool you would like to build)
+  git submodule update --init --recursive
   make -C $CWD/external all
   #make -C $CWD/external verilator
   #make -C $CWD/external gnu
