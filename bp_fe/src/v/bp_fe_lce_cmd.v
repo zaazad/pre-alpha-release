@@ -20,6 +20,7 @@
 
 
 module bp_fe_lce_cmd
+  import bp_common_pkg::*;
   import bp_fe_icache_pkg::*;
   #(parameter data_width_p="inv"
     , parameter lce_data_width_p="inv"
@@ -74,7 +75,7 @@ module bp_fe_lce_cmd
                                                                       ,lce_data_width_p
                                                                       ,ways_p
                                                                      )    
-    , localparam lce_id_width_lp=`bp_lce_id_width
+    , localparam lce_id_width_lp=`BSG_SAFE_CLOG2(num_lce_p)
    )
    (input                                                        clk_i
     , input                                                      reset_i
@@ -169,7 +170,7 @@ module bp_fe_lce_cmd
 
     data_mem_pkt_lo        = '0;
     tag_mem_pkt_lo         = '0;
-    metadata_mem_pkt_v_o   = '0;
+    metadata_mem_pkt_lo   = '0;
 
     lce_ready_o             = (state_r != e_lce_cmd_reset);
     tag_set_o               = 1'b0;
@@ -185,7 +186,7 @@ module bp_fe_lce_cmd
            
     case (state_r)
       e_lce_cmd_ready: begin
-        if (lce_cmd_li.msg_type == e_lce_cmd_transfer_tmp) begin
+        if (lce_cmd_li.msg_type == e_lce_cmd_transfer) begin
           data_mem_pkt_lo.index  = lce_cmd_li.addr[lg_data_mask_width_lp
                                                        +lg_block_size_in_bytes_lp
                                                        +:lg_lce_sets_lp];

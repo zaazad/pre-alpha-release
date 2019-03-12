@@ -9,6 +9,7 @@ module bp_be_nonsynth_tracer
  /* TODO: Get rid of this */
  import bp_be_pkg::*;
  import bp_be_rv64_pkg::*;
+ import bp_common_pkg::*;
  #(parameter vaddr_width_p="inv"
    , parameter paddr_width_p="inv"
    , parameter asid_width_p="inv"

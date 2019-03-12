@@ -20,6 +20,7 @@
 
 
 module bp_fe_lce_req
+  import bp_common_pkg::*;
   import bp_fe_icache_pkg::*;
   #(parameter data_width_p="inv"
     , parameter lce_addr_width_p="inv"
@@ -44,7 +45,7 @@ module bp_fe_lce_req
                                                            ,ways_p
                                                           )
     , localparam lce_cce_resp_width_lp=`bp_lce_cce_resp_width(num_cce_p, num_lce_p, lce_addr_width_p)
-    , localparam lce_id_width_lp=`bp_lce_id_width
+    , localparam lce_id_width_lp=`BSG_SAFE_CLOG2(num_lce_p)
 
     )
    (input                                      clk_i
@@ -131,6 +132,8 @@ module bp_fe_lce_req
     lce_resp_lo.msg_type     = e_lce_cce_tr_ack;
     lce_resp_lo.addr         = miss_addr_r;
     lce_resp_v_o             = 1'b0;
+
+    cache_miss_o = 1'b0;
      
     case (state_r)
       e_lce_req_ready: begin

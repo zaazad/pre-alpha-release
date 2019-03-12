@@ -593,6 +593,7 @@ module bp_cce
   // Directory source selects
   always_comb
   begin
+    dir_way_i = '0;
     case (decoded_inst_o.dir_way_group_sel)
       e_dir_wg_sel_r0: begin
         dir_way_group_i = gpr_r_o[e_gpr_r0][lg_lce_sets_lp-1:0];
@@ -657,6 +658,7 @@ module bp_cce
   localparam [`bp_cce_inst_gpr_width-2:0] gpr_width_minus1_0 = (`bp_cce_inst_gpr_width-1)'('0);
   always_comb
   begin
+    alu_opd_b_i = '0;
 
     // ALU operand a select
     // TODO: set to 0 if not ALU operation
