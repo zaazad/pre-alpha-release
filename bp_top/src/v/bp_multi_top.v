@@ -124,6 +124,8 @@ logic [num_lce_p-1:0] remote_lce_tr_resp_v, remote_lce_tr_resp_rdy;
 
 bp_proc_cfg_s[core_els_p-1:0] proc_cfg;
 
+logic [num_lce_p-1:0]           is_cce_queue_ready;
+   
 // Module instantiations
 genvar core_id;
 generate 
@@ -233,7 +235,6 @@ for(core_id = 0; core_id < core_els_p; core_id++)
        ,.v_o(fe_fe_cmd_v[core_id])
        ,.yumi_i(fe_fe_cmd_rdy[core_id])
        );
-
     bp_be_top 
      #(.vaddr_width_p(vaddr_width_p)
        ,.paddr_width_p(paddr_width_p)
@@ -295,6 +296,8 @@ for(core_id = 0; core_id < core_els_p; core_id++)
        ,.cmt_trace_stage_reg_o(cmt_trace_stage_reg_o[core_id])
        ,.cmt_trace_result_o(cmt_trace_result_o[core_id])
        ,.cmt_trace_exc_o(cmt_trace_exc_o[core_id])
+       
+       ,.is_cce_queue_ready(is_cce_queue_ready[core_id])
        );
   end
 endgenerate 
@@ -349,6 +352,8 @@ bp_me_top
 
    ,.cce_inst_boot_rom_addr_o(cce_inst_boot_rom_addr_o)
    ,.cce_inst_boot_rom_data_i(cce_inst_boot_rom_data_i)
+
+   ,.is_cce_queue_ready(is_cce_queue_ready)
    );
 
 endmodule : bp_multi_top

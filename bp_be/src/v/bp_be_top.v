@@ -191,6 +191,8 @@ module bp_be_top
    , output [pipe_stage_reg_width_lp-1:0]    cmt_trace_stage_reg_o
    , output [calc_result_width_lp-1:0]       cmt_trace_result_o
    , output [exception_width_lp-1:0]         cmt_trace_exc_o
+
+   ,input is_cce_queue_ready
    );
 
 // Declare parameterized structures
@@ -374,6 +376,8 @@ bp_be_mmu_top
     ,.lce_tr_resp_ready_i(lce_lce_tr_resp_rdy_i)
 
     ,.dcache_id_i(proc_cfg.dcache_id)
+
+    ,.is_cce_queue_ready(is_cce_queue_ready)
     );
 
 endmodule : bp_be_top

@@ -38,7 +38,7 @@
  *
  *      LCE could receive data transfer from another LCE or could be commanded
  *    to transfer data to another LCE. When transfer is received, tr module
- *    raises tr_received_li signal to lce_req module.
+ *    raises tr_received_li vsignal to lce_req module.
  */
 
 module bp_be_dcache_lce

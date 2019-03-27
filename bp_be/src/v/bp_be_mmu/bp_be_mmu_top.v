@@ -165,8 +165,8 @@ module bp_be_mmu_top
    , output                                mmu_resp_v_o
    , input                                 mmu_resp_ready_i
 
-   , output [lce_req_width_lp-1:0]         lce_req_o
-   , output                                lce_req_v_o
+   , output logic [lce_req_width_lp-1:0]   lce_req_o
+   , output logic                          lce_req_v_o
    , input                                 lce_req_ready_i
 
    , output [lce_resp_width_lp-1:0]        lce_resp_o
@@ -194,6 +194,8 @@ module bp_be_mmu_top
    , input                                 lce_tr_resp_ready_i
 
    , input [lce_id_width_lp-1:0]           dcache_id_i
+
+   , input is_cce_queue_ready
    );
 
 `declare_bp_be_internal_if_structs(vaddr_width_p
@@ -217,6 +219,25 @@ assign mmu_resp_o = mmu_resp;
 //         This cast works, though
 assign mmu_cmd_vaddr = mmu_cmd.vaddr;
 
+//prefetcher
+`declare_bp_lce_cce_req_s(num_cce_p, num_lce_p, paddr_width_p, lce_assoc_p);
+localparam lce_data_width_lp = lce_assoc_p*reg_data_width_lp;   
+`declare_bp_cce_lce_data_cmd_s(num_cce_p, num_lce_p, paddr_width_p, lce_data_width_lp, lce_assoc_p);
+bp_cce_lce_data_cmd_s lce_data_cmd;
+bp_lce_cce_req_s lce_req_prefetcher;
+bp_lce_cce_req_s save_lce_req;   
+bp_lce_cce_req_s lce_req_tmp_s;
+   
+logic lce_req_v_prefetcher;  
+logic [63:0] save_miss_address, prefetch_address, prefetch_addr;
+logic [511:0] prefetch_data;
+logic prefetch_data_v;   
+logic [lce_req_width_lp-1:0] lce_req_tmp;
+logic lce_req_v_tmp;
+logic send_prefetch_req, prev_send_prefetch_req;
+logic lce_data_cmd_v_tmp;
+logic prefetching_in_progress;
+   
 /* Internal connections */
 logic tlb_miss;
 logic [ptag_width_lp-1:0] ptag_r;
@@ -262,9 +283,9 @@ bp_be_dcache
     ,.poison_i(chk_psn_ex_i)
 
     // LCE-CCE interface
-    ,.lce_req_o(lce_req_o)
-    ,.lce_req_v_o(lce_req_v_o)
-    ,.lce_req_ready_i(lce_req_ready_i)
+    ,.lce_req_o(lce_req_tmp)
+    ,.lce_req_v_o(lce_req_v_tmp)
+    ,.lce_req_ready_i(lce_req_ready_i /*open ~prefetching_in_progress & lce_req_ready_i*/)
 
     ,.lce_resp_o(lce_resp_o)
     ,.lce_resp_v_o(lce_resp_v_o)
@@ -280,7 +301,7 @@ bp_be_dcache
     ,.lce_cmd_ready_o(lce_cmd_ready_o)
 
     ,.lce_data_cmd_i(lce_data_cmd_i)
-    ,.lce_data_cmd_v_i(lce_data_cmd_v_i)
+    ,.lce_data_cmd_v_i(lce_data_cmd_v_tmp)//lce_data_cmd_v_i
     ,.lce_data_cmd_ready_o(lce_data_cmd_ready_o)
 
     // LCE-LCE interface
@@ -302,6 +323,97 @@ always_comb
     mmu_resp.exception.cache_miss_v = dcache_miss_v;
   end
 
+//prefetcher
+assign lce_req_tmp_s = lce_req_tmp;   
+assign lce_data_cmd  = lce_data_cmd_i;
+always_ff @(posedge clk_i)
+  begin
+
+     if (lce_req_v_tmp)
+       begin
+          save_miss_address <= lce_req_tmp_s.addr;
+          save_lce_req <= lce_req_tmp;
+          send_prefetch_req <= '0;
+       end
+     
+//===================================
+     if (/*is_cce_queue_ready &*/ lce_data_cmd_v_i & (save_miss_address[21:0] == lce_data_cmd.addr[21:0]))
+       begin
+          send_prefetch_req <= '1;
+          prefetch_address  <= save_miss_address + 22'h40;
+       end
+     else
+       begin
+          send_prefetch_req <= '0;
+       end
+    
+
+//===================================== 
+     if (lce_data_cmd_v_i & (prefetch_address[21:0] == lce_data_cmd.addr[21:0]))
+       begin
+          prefetch_data   <= lce_data_cmd.data;
+          prefetch_data_v <= '1;
+          prefetch_addr   <= prefetch_address;
+          prefetching_in_progress <= '0;
+       end
+     else
+       begin
+          prefetch_data_v <= '0;
+       end
+
+//=======================================
+     if (reset_i)
+       begin
+          prefetching_in_progress <= '0;
+          lce_req_v_prefetcher    <= '0;
+       end
+     else if (~prev_send_prefetch_req & send_prefetch_req)
+       begin
+          prefetching_in_progress <= '1;
+          lce_req_v_prefetcher    <= '1;
+       end
+     else if (lce_data_cmd_v_i & (prefetch_address[21:0] == lce_data_cmd.addr[21:0]))
+       begin
+          prefetching_in_progress <= '0;
+          lce_req_v_prefetcher    <= '0;
+       end
+     else
+       begin
+          lce_req_v_prefetcher    <= '0;
+       end
+
+//====================================
+     prev_send_prefetch_req <= send_prefetch_req;
+ end // always_ff @ (posedge clk_i)
+
+
+always_comb
+  begin
+//     lce_req_v_prefetcher = '1;
+     lce_req_prefetcher.addr = save_miss_address + 22'h40;
+     lce_req_prefetcher.dst_id = save_lce_req.dst_id;
+     lce_req_prefetcher.src_id = save_lce_req.src_id;
+     lce_req_prefetcher.non_exclusive = save_lce_req.non_exclusive;
+     lce_req_prefetcher.msg_type = save_lce_req.msg_type;
+     lce_req_prefetcher.lru_way_id = save_lce_req.lru_way_id;
+     lce_req_prefetcher.lru_dirty = save_lce_req.lru_dirty;
+     
+     lce_req_o    = /*open ~prefetching_in_progress  ?  */ lce_req_tmp     /*: lce_req_prefetcher*/;
+     lce_req_v_o  = /*open ~prefetching_in_progress  ?  */ lce_req_v_tmp   /*: lce_req_v_prefetcher*/;
+
+     if (lce_data_cmd_v_i & (prefetch_address[21:0] == lce_data_cmd.addr[21:0]))
+       begin
+          lce_data_cmd_v_tmp = '0;
+       end
+     else if (lce_data_cmd_v_i)
+       begin
+          lce_data_cmd_v_tmp = '1;
+       end
+     else
+       begin
+          lce_data_cmd_v_tmp = '0;
+       end
+end
 // Ready-valid handshakes
 assign mmu_resp_v_o    = dcache_v;
 assign mmu_cmd_ready_o = dcache_ready & ~dcache_miss_v;
