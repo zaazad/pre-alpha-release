@@ -1,0 +1,322 @@
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.comp_stage_mux.data0_i[127:0] // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.comp_stage_mux.sel_i[0:0] // 1 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.pipe_mul.result_o // 0 always
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.inst_decode.pending_v_i // 0 always
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.inst_decode.wfq_v_vec[0:0] // 0 or X
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.v_i // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.branch_metadata_fwd_o[21:0] // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.unused0 // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.icache_pc_gen_ready_o // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.pc_gen_itlb_v_o // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.pc_gen_itlb_ready_i // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.unused1 // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.lru_decode_mask_lo[0:0] // 1 or X
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.icache_pc_gen_data_ready_i // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.itlb_icache_data_resp_v_i // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.unused0 // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.mmu_resp_ready_i // 1 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.unused0 // 1 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.pipe_mem.mmu_resp_ready_o // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.genblk1.branch_prediction_1.bht_1.en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[4:4] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.v_i_stub[4:2] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.ready_i_stub[4:4] // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.v_i_stub[4:2] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[0:0] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[0:0] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[0:0] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[1:1] // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.ready_i_stub[2:2] // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.ready_i_stub[3:3] // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.N_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.N_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.S_gnt_e // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.S_gnt_w // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.my_y_i // 1 always
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.lru_addr_r_o[5:0] // 0 or X
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.pe_load_hit.a.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.pe_invalid.a.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.int_bypass.bypass.match_one_hot_rs1.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.int_bypass.bypass.match_one_hot_rs2.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.fp_bypass.bypass.match_one_hot_rs1.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.fp_bypass.bypass.match_one_hot_rs2.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.pe_load_hit.a.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.pe_store_hit.a.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.pe_invalid.a.scan.fill // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.tlb_miss_i // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.lru_decode_mask_lo[0:0] // 1 or X
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.lce.lce_cmd.data_mem_pkt_o[521:74] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk5.south_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.genblk5.south_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.proc_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.proc_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.proc_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk2.west_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.genblk3.east_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.genblk4.north_rr_arb.grants_en_i // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.lce.lce_req.genblk1®zero_r // 0 or X
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.cce_reg.lru_addr_n[5:0] // 0 or X
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.cce_reg.lru_addr_r[5:0] // 0 or X
+-node test_bp.tb.dut.me.genblk1[0].bp_cce_top.bp_cce.cce_reg.lru_addr_o[5:0] // 0 or X
+-node test_bp.tb.dut.rof1[0].core.be.be_calculator.mmu_resp_ready_o // 1 always
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[482:482] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[462:462] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[387:387] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[366:366] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[334:333] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[323:323] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[291:291] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[259:259] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[238:238] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[211:210] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[206:206] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[147:147] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[99:99] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[46:46] // 0 or X
+-node test_bp.tb.rof1[0].me_boot_rom.data_o[14:14] // 0 or X
+-node test_bp.tb.tr_rom_data_o[132:131] // 0 or X
+-node test_bp.tb.tr_rom_data_o[127:96] // 0 or X
+-node test_bp.tb.tr_rom_data_o[93:84] // 0 or X
+-node test_bp.tb.tr_rom_data_o[81:81] // 0 or X
+-node test_bp.tb.tr_rom_data_o[76:76] // 0 or X
+-node test_bp.tb.tr_rom_data_o[74:74] // 0 or X
+-node test_bp.tb.tr_rom_data_o[72:72] // 0 or X
+-node test_bp.tb.tr_rom_data_o[69:69] // 0 or X
+-node test_bp.tb.trace_rom.data_o[132:131] // 0 or X
+-node test_bp.tb.trace_rom.data_o[127:96] // 0 or X
+-node test_bp.tb.trace_rom.data_o[93:84] // 0 or X
+-node test_bp.tb.trace_rom.data_o[81:81] // 0 or X
+-node test_bp.tb.trace_rom.data_o[76:76] // 0 or X
+-node test_bp.tb.trace_rom.data_o[74:74] // 0 or X
+-node test_bp.tb.trace_rom.data_o[72:72] // 0 or X
+-node test_bp.tb.trace_rom.data_o[69:69] // 0 or X
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.genblk1.branch_prediction_1.branch_metadata_o[21:0] // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.bp_fe_pc_gen_1.genblk1.branch_prediction_1.branch_metadata_fwd_o[21:0] // 0 always
+-node test_bp.tb.dut.rof1[0].core.be.mmu_resp_rdy // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_pc_gen_ready // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.pc_gen_itlb_v // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.fe_itlb_ready // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.pc_gen_itlb_ready // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.itlb_icache_data_resp_v // 1 always
+-node test_bp.tb.dut.rof1[0].core.fe.itlb_fe_v // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.lce.lce_cmd_data_mem_pkt_lo[521:74] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.v_i[4:2] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[4:2] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.v_i[4:2] // 0 always
+-node test_bp.tb.dut.me.network.cce_lce_data_cmd_network.rof[1].efi2.fi9.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[4:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_req_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[0:0] // 0 always
+-node test_bp.tb.dut.me.network.lce_cce_data_resp_network.rof[1].efi2.fi7.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[1:1] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[0].fi2.efi3.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:3] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.dor_decoder.my_x_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.dor_decoder.my_y_i // 1 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.dor_decoder.v_i[3:2] // 0 always
+-node test_bp.tb.dut.me.network.lce_lce_tr_resp_network.rof[1].efi2.fi5.coherence_network_channel_node.bmr.dor_decoder.v_i_stub[3:2] // 0 always
+-node test_bp.tb.dut.rof1[0].core.fe.icache_1.lru_decode.mask_o[0:0] // 1 or X
+-node test_bp.tb.dut.rof1[0].core.be.be_mmu.dcache.lru_decode.mask_o[0:0] // 1 or X
