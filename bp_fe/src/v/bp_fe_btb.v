@@ -36,7 +36,7 @@ module bp_fe_btb
    , input [eaddr_width_lp-1:0]   br_tgt_i
    );
 
-localparam btb_tag_width_lp = rv64_eaddr_width_gp-btb_idx_width_p-btb_offset_width_lp;
+localparam btb_tag_width_lp = rv64_eaddr_width_gp-btb_idx_width_p-btb_offset_width_lp;   
 localparam btb_els_lp       = 2**btb_idx_width_p;
 
 logic [btb_tag_width_lp-1:0] tag_mem_li, tag_mem_lo;
@@ -51,7 +51,7 @@ logic [btb_tag_width_lp-1:0] r_tag_n, r_tag_r;
 logic [btb_idx_width_p-1:0]  r_idx_n, r_idx_r;
 logic                        r_v_r;
 
-assign tag_mem_li = w_addr_i[btb_offset_width_lp+btb_idx_width_p+:btb_tag_width_lp];
+assign tag_mem_li =w_addr_i[btb_offset_width_lp+btb_idx_width_p+:btb_tag_width_lp];
 assign tag_mem_addr_li = w_v_i
                          ? w_addr_i[btb_offset_width_lp+:btb_idx_width_p] 
                          : r_addr_i[btb_offset_width_lp+:btb_idx_width_p];
@@ -102,7 +102,7 @@ assign br_tgt_v_o = tag_mem_v_lo & r_v_r & (tag_mem_lo == r_tag_r);
 
 always_ff @(posedge clk_i)
   begin
-      r_tag_r <= r_addr_i[btb_offset_width_lp+btb_idx_width_p+:btb_tag_width_lp];
+     r_tag_r <= r_addr_i[btb_offset_width_lp+btb_idx_width_p+:btb_tag_width_lp];
       r_idx_r <= r_addr_i[btb_offset_width_lp+:btb_tag_width_lp];
 
       // Read didn't actually happen if there was a write
