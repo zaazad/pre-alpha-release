@@ -141,6 +141,20 @@ typedef struct packed
   }  bp_fe_branch_metadata_fwd_s;
 
 
+`define declare_bp_be_tlb_entry_s(ptag_width_mp) \
+  typedef struct packed {                        \
+    logic [ptag_width_mp-1:0]  ptag;             \
+    logic                      extent;           \
+    logic                      u;                \
+    logic                      g;                \
+    logic                      l;                \
+    logic                      x;                \
+  } bp_be_tlb_entry_s
+
+`define bp_be_tlb_entry_width(ptag_width_mp) \
+  (ptag_width_mp + 5)
+
+
 /*
  *  All the opcode macros for the control flow instructions.  These opcodes are
  * used in the Frontend for scanning compressed instructions.
@@ -158,7 +172,7 @@ typedef struct packed
 `define bp_fe_not_compressed 0
 
 
-`define bp_fe_itlb_icache_width(ppn_width_mp) (ppn_width_mp)
+`define bp_fe_itlb_icache_data_resp_width(ppn_width_mp) (ppn_width_mp)
 
 `define bp_fe_pc_gen_queue_width(vaddr_width_mp,branch_metadata_fwd_width_mp) \
   (`bp_fe_queue_width(vaddr_width_mp,branch_metadata_fwd_width_mp)+`bp_fe_instr_scan_width)
