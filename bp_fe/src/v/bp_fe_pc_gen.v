@@ -144,6 +144,15 @@ bp_fe_branch_metadata_fwd_s fe_queue_branch_metadata, fe_queue_branch_metadata_r
 
 logic btb_pred_f1_r, btb_pred_f2_r;
 
+//ras
+logic ras_push;
+logic ras_pop;
+logic [eaddr_width_p-1:0] ras_update;
+logic [eaddr_width_p-1:0] ras_predict;
+logic                     ras_predict_valid;
+logic                     is_ret, prev_is_ret;
+logic                     prev_is_ret, pprev_is_ret;
+   
 //connect pc_gen to the rest of the FE submodules as well as FE top module   
 assign pc_gen_icache_o = pc_gen_icache;
 assign pc_gen_itlb_o   = pc_gen_itlb;
@@ -193,8 +202,10 @@ begin
     end
 end
 
-assign pc_v_f1 = ~((predict_taken & ~btb_pred_f2_r));
-
+assign pc_v_f1    = ~((predict_taken & ~btb_pred_f2_r));
+assign ras_push   = reset_i ? '0 : icache_pc_gen_v_i & (scan_instr.instr_scan_class == e_rvi_call);
+assign ras_update = icache_pc_gen.addr + 4;
+   
 // stall logic
 assign stall = ~pc_gen_fe_ready_i | (~pc_gen_icache_ready_i &  ~tlb_miss_v_i) | icache_miss_i;
 
@@ -208,11 +219,14 @@ begin
     begin
         icache_miss_prev <= '0;
         tlb_miss_prev    <= '0;
+        prev_is_ret      <= '0;
     end
     else
     begin
         icache_miss_prev <= icache_miss_i;
         tlb_miss_prev    <= tlb_miss_v_i;
+        prev_is_ret      <= is_ret;
+        pprev_is_ret     <= prev_is_ret;
     end
 end
 
@@ -225,27 +239,38 @@ begin
     // if we need to redirect
     if (fe_pc_gen_cmd.pc_redirect_valid && fe_pc_gen_v_i) begin
         pc_n = fe_pc_gen_cmd.pc;
+        ras_pop = '0;
     end
     // if we've missed in the itlb
     else if (tlb_miss_recover)
     begin
-        pc_n = pc_f1; 
+        pc_n = pc_f1;
+       ras_pop= '0;
     end
     // if we've missed in the icache
     else if (icache_miss_recover)
     begin
         pc_n = pc_f2;
+       ras_pop= '0;
     end
-    else if (btb_br_tgt_v_lo)
-    begin
+    else if (ras_predict_valid && is_ret && ~prev_is_ret)
+      begin
+         ras_pop = '1;
+         pc_n = ras_predict;
+      end 
+    else if (~prev_is_ret & ~pprev_is_ret &  btb_br_tgt_v_lo)
+      begin
+         ras_pop= '0;
         pc_n = btb_br_tgt_lo;
     end
-    else if (predict_taken)
+    else if (~prev_is_ret & ~pprev_is_ret & predict_taken)
     begin
         pc_n = br_target;
+       ras_pop= '0;
     end
     else
-    begin
+      begin
+         ras_pop= '0;
         pc_n = pc_f1 + 4;
     end
 end
@@ -316,8 +341,25 @@ instr_scan
    ,.scan_o(scan_instr)
    );
 
+
+bp_fe_ras
+  #(.eaddr_width_p(eaddr_width_p)
+   )
+  ras
+   (.clk_i(clk_i)
+    ,.reset_i(reset_i)
+
+    ,.push_i(ras_push)
+    ,.pop_i(ras_pop)
+    ,.data_i(ras_update)
+
+    ,.data_o(ras_predict)
+    ,.ras_out_v(ras_predict_valid)
+   );
+   
 assign is_br = icache_pc_gen_v_i & (scan_instr.instr_scan_class == e_rvi_branch);
 assign is_jal = icache_pc_gen_v_i & (scan_instr.instr_scan_class == e_rvi_jal);
+assign is_ret = icache_pc_gen_v_i & (scan_instr.instr_scan_class == e_rvi_ret);   
 assign br_target = icache_pc_gen.addr + scan_instr.imm; 
 assign is_back_br = scan_instr.imm[63];
 assign predict_taken = pc_v_f2 & ((is_br & is_back_br) | (is_jal)) & icache_pc_gen_v_i;
